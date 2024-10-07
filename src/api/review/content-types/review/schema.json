@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "horror_level": {
+      "type": "integer"
+    },
+    "profanity_level": {
+      "type": "integer"
+    },
+    "violence_level": {
+      "type": "integer"
+    },
+    "nudity_level": {
+      "type": "integer"
+    },
+    "sexual_content_level": {
+      "type": "integer"
+    },
+    "substance_abuse_level": {
+      "type": "integer"
+    },
+    "gambling_content_level": {
+      "type": "integer"
+    },
+    "wokeness_level": {
+      "type": "integer"
+    },
+    "overall_score": {
+      "type": "decimal"
+    },
+    "tmbd_id": {
+      "type": "string"
+    },
+    "media_type": {
+      "type": "enumeration",
+      "enum": [
+        "movie",
+        "tv"
+      ],
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "reviews"
+    },
+    "user_ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-rating.user-rating",
+      "mappedBy": "review"
+    },
+    "user_metrics": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-metric.user-metric",
+      "mappedBy": "review"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "review"
+    }
+  }
+}

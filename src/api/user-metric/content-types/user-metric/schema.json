@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_metrics",
+  "info": {
+    "singularName": "user-metric",
+    "pluralName": "user-metrics",
+    "displayName": "User Metric"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "metric_type": {
+      "type": "enumeration",
+      "enum": [
+        "Horror Level",
+        "Violence Level",
+        "Profanity Level",
+        "Nudity Level",
+        "Sexual Content Level",
+        "Substance Abuse Level",
+        "Gambling Level",
+        "Wokeness Level"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": "integer",
+      "max": 10,
+      "min": 0,
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_metrics"
+    },
+    "review": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::review.review",
+      "inversedBy": "user_metrics"
+    }
+  }
+}
